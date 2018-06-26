@@ -27,32 +27,38 @@ void loop()
   }
   if (typew == 26) // Type 26 is a card scan
   {
-    Serial.print("Card = ");
-    Serial.println(wg.getCode());
+    Serial.write(2); //STX
+    //Serial.print("Card = ");
+    Serial.print("R");
+    Serial.print(wg.getCode());
+    Serial.write(3); //ETX
     buttontotal = ""; // clears out keypad presses
   }
   else if (typew == 4) // Type 4 is a button press
   {
     button = wg.getCode();
   }
-  if (button == 27)
+  if (button == 27) // ESC Button
   {
     buttontotal = ""; // clears out keypad presses
-    Serial.println("Keypad Cleared");
+    //Serial.println("Keypad Cleared");
   }
   else if (button == 13) // Type 4 is ENT
   {
-    Serial.print("Final Code = ");
-    Serial.println(buttontotal);
+    //Serial.print("Final Code = ");
+    Serial.write(2); //STX
+    Serial.print("K");
+    Serial.print(buttontotal);
+    Serial.write(3); //ETX
     buttontotal = ""; // clears out keypad presses
-    Serial.println("Keypad Cleared");
+    //Serial.println("Keypad Cleared");
   }
   else if (button <= 9) // Check
   {
-  Serial.print("Number = ");
-  Serial.println(button);
+  //Serial.print("Number = ");
+  //Serial.println(button);
   buttontotal += button;
-  Serial.print("Button Total = ");
-  Serial.println(buttontotal);
+  //Serial.print("Button Total = ");
+  //Serial.println(buttontotal);
   }
 }
