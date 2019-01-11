@@ -1,7 +1,9 @@
 // Code by chad elish
-// www.hackpgh.org www.nationofmakers.us
-// Thank you to Steve and Geno for the help.
+// www.makerchad.com
+// Created for the maker community and HackPGH.
+// Thank you to Steve Owens and Geno Soroka for the help.
 // Also thank you to MonkeyBoard.
+// P.S. You will need the Wiegand library for this to run properly. https://github.com/monkeyboard/Wiegand-Protocol-Library-for-Arduino
 
 #include <Wiegand.h>
 String buttontotal; // Total values of buttons pressed
