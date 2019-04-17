@@ -7,6 +7,8 @@
 
 #include <Wiegand.h>
 String buttontotal; // Total values of buttons pressed
+char typew; // Defines if a button was pressed or a card was scanned
+int button = 100; // Last Button Pressed... set to a high number so last else if statment doesn't run
 WIEGAND wg;
 
 void setup() {
@@ -16,12 +18,12 @@ void setup() {
   // for non UNO board, use wg.begin(pinD0, pinD1) where pinD0 and pinD1
   // are the pins connected to D0 and D1 of wiegand reader respectively.
   wg.begin();
+  
 }
 
 void loop()
 {
-  char typew; // Defines if a button was pressed or a card was scanned
-  int button = 100; // Last Button Pressed... set to a high number so last else if statment doesn't run
+  
   if (wg.available())
   {
     // Serial.print(wg.getWiegandType());
@@ -35,6 +37,7 @@ void loop()
     Serial.print(wg.getCode());
     Serial.write(3); //ETX
     buttontotal = ""; // clears out keypad presses
+    typew = "";
   }
   else if (typew == 4) // Type 4 is a button press
   {
